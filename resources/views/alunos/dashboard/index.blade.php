@@ -117,7 +117,7 @@
     </div>
 
     <div class="col-sm-3">
-      <a href="" class="bloco col-sm-12">
+      <a href="{{route('admin.equipe.profile',['id'=>$equipe->id])}}" class="bloco col-sm-12">
         <i class="fas fa-user"></i>
         <p>Perfil da Equipe</p>
       </a>

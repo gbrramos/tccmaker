@@ -54,4 +54,11 @@ class EquipeController extends Controller
 
         return redirect()->route('admin.equipe.view',['id'=>$id]);
     }
+
+    public function editar(Request $id)
+    {
+        $idAuth = Auth::id();
+        $equipe = Equipe::where('id_user',$idAuth)->first();
+        dd($equipe);
+    }
 }
