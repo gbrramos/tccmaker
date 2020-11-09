@@ -86,21 +86,21 @@
   </div>
 
   <div class="center row col-sm-12">
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <a href="{{route('admin.doc.lista')}}" class="bloco col-sm-12">
         <i class="fas fa-clipboard"></i>
         <p>Documentação adicionada</p>
       </a>
     </div>
   @if($d==0)
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <a href="{{route('admin.doc.novo')}}" class="bloco col-sm-12">
         <i class="fas fa-plus"></i>
         <p>Adicionar documentação</p>
       </a>
     </div>
     @else
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <a href="{{route('admin.doc.editar',['id'=>$doc->id])}}" class="bloco col-sm-12">
       <i class="fas fa-pencil-alt"></i>
         <p>Editar documentação</p>
@@ -108,7 +108,7 @@
     </div>
     @endif
 
-    <div class="col-sm-3">
+    <div class="col-sm-4">
       <a href="{{route('admin.doc.notas')}}" class="bloco col-sm-12">
         <i class="fas fa-chalkboard-teacher"></i>
         <p>Notas do Professor</p>
@@ -116,13 +116,7 @@
 
     </div>
 
-    <div class="col-sm-3">
-      <a href="{{route('admin.equipe.profile',['id'=>$equipe->id])}}" class="bloco col-sm-12">
-        <i class="fas fa-user"></i>
-        <p>Perfil da Equipe</p>
-      </a>
-
-    </div>
+    
 
 
 
