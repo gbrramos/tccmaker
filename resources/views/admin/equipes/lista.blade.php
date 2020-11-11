@@ -7,6 +7,12 @@
 .col-12 nav {
     text-align: center;
 }
+
+section.content {
+      max-width: 800px;
+      margin: 0 auto;
+      float: inherit;
+    }
 </style>
 @endsection
 @section('content')

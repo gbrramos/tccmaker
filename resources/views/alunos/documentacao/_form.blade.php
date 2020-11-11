@@ -22,35 +22,41 @@
     </div>
 
     <div class="col-sm-6">
-    {!! Form::label('objetivos_especificos','Objetivos Específicos') !!}
-    
+      {!! Form::label('objetivos_especificos','Objetivos Específicos') !!}
+
       <ul class="inputList">
-      
+
         <li class='element col-sm-12' id='div_0' style='padding: 0;'>
           <input type='text' name='objetivo_especifico[0]' id='txt_0' class="m-bottom-xs form-control col-sm-10">
           <span class='add btn btn-primary btn-md m-left-sm m-bottom-xs'><i class="fas fa-plus"></i></span>
         </li>
+        <style>
+          input.form-control {
+            width: 90%;
+          }
+        </style>
         @if(count($objetivosEspecificos)>0)
         @foreach(@$objetivosEspecificos as $objetivo)
-      <li class='element col-sm-12' id='div_{{$objetivo->id}}' style='padding: 0;'>
-          <input type='text' id='txt_{{$objetivo->id}}' class="m-bottom-xs form-control col-sm-10" name='objetivo_especifico[{{$objetivo->id}}]' value="{{@$objetivo->descricao}}">
-          <span id='remove_{{$objetivo->id}}' class='remove btn btn-danger btn-md m-left-sm m-bottom-xs'><i class='fas fa-trash'></i></span>
+        <li class='element col-sm-12' id='div_{{$objetivo->id}}' style='padding: 0;'>
+          <input type='text' id='txt_{{$objetivo->id}}' class="m-bottom-xs form-control col-sm-10"
+            name='objetivo_especifico[{{$objetivo->id}}]' value="{{@$objetivo->descricao}}">
+          <span id='remove_{{$objetivo->id}}' class='remove btn btn-danger btn-md m-left-sm m-bottom-xs'><i
+              class='fas fa-trash'></i></span>
         </li>
-      @endforeach
-      @endif
+        @endforeach
+        @endif
       </ul>
     </div>
   </div>
 
   <div class="list-action col-sm-12">
-        <div class="row  m-top-md" style="position:relative;background:#e9e9e9;padding:10px;">
-        <a href="{{route('admin.index')}}" class="btn btn-flat btn-danger" data-action="exit">Sair</a>
+    <div class="row  m-top-md" style="position:relative;background:#e9e9e9;padding:10px;">
+      <a href="{{route('admin.index')}}" class="btn btn-flat btn-danger" data-action="exit">Sair</a>
 
-          <button type="submit" class="btn btn-flat btn-success" data-action="salvar" style="position:absolute;right:10px;">Salvar</button>
+      <button type="submit" class="btn btn-flat btn-success" data-action="salvar"
+        style="position:absolute;right:10px;">Salvar</button>
 
-        </div>
-      </div>
+    </div>
+  </div>
 
 </section>
-
-

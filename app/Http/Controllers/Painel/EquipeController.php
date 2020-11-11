@@ -43,7 +43,7 @@ class EquipeController extends Controller
     
     
     public function comentario(Request $request, $id)
-    {
+    { 
         $equipe = Documentacao::where('equipe_id','=',$id)->first();
         $data = $request->all();
         $data['documentacao_id'] = $id;

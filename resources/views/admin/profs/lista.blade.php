@@ -7,13 +7,19 @@
 .col-12 nav {
     text-align: center;
 }
+
+section.content {
+      max-width: 800px;
+      margin: 0 auto;
+      float: inherit;
+    }
 </style>
 @endsection
 @section('content')
 
 
 <section class="content-header">
-    <h1 class="col-6">Equipes</h1>
+    <h1 class="col-6">Professores</h1>
 
 </section>
 

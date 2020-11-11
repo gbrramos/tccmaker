@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="{{ asset('adminLTE/plugins/select2/css/select2.css')}}">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
   <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-  
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{asset('adminLTE/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Ionicons -->
@@ -130,6 +130,8 @@
     .wrapper {
       width: 100%;
     }
+
+   
   </style>
 
 </head>
@@ -150,102 +152,6 @@
     transform: translate(-50%, -50%);"></div>
 
 
-  @if(Auth::user()->type == "super_admin")
-
-  <div class="wrapper">
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <!-- Left navbar links -->
-
-      <ul class="navbar-nav" style="width: 100%">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="{{route('admin.index')}}" class="nav-link"><i class="fas fa-home"></i> Home</a>
-        </li>
-        <li class="nav-item d-non d-sm-inline-block" style="position: absolute; right: 0;">
-          <a href="{{ route('logout') }}" class="nav-link">
-            <i class="fas fa-sign-out-alt"></i> Logout
-          </a>
-        </li>
-      </ul>
-
-
-
-
-    </nav>
-    <!-- /.navbar -->
-
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <!-- Brand Logo -->
-      <ul class="nav nav-pills nav-sidebar flex-column p-left-md p-top-md" data-widget="treeview" role="menu"
-        data-accordion="false">
-        <img class="brand-image" src="{{asset('min/img/logo.png')}}" style="width: 100px; min-height:100%;">
-      </ul>
-      <hr>
-
-      <!-- Sidebar -->
-      <div class="sidebar">
-
-        <nav class="mt-2">
-
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item">
-              <a href="{{route('admin.profPainel.lista')}}" class="nav-link">
-                <i class="fas fa-chalkboard-teacher"></i>
-                <p>
-                  Professores
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="{{route('admin.equipes.lista')}}" class="nav-link">
-                <i class="fas fa-users"></i>
-                <p>
-                  Equipes
-                </p>
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="fas fa-life-ring"></i>
-                <p>Suporte</p>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
-      </div>
-      <!-- /.sidebar -->
-    </aside>
-
-    <!-- Content Wrapper. Contains page content -->
-
-    <!-- /.content-wrapper -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-
-
-      <!-- Main content -->
-      <section class="content">
-
-        @yield('content')
-
-      </section>
-      <!-- /.content -->
-    </div>
-
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-  </div>
-  @else
   <div id="container">
     <header class="page-header">
 
@@ -271,13 +177,12 @@
 
     <!-- Main content -->
     <section class="content">
-
+      
       @yield('content')
 
     </section>
     <!-- /.content -->
   </div>
-  @endif
   <!-- /.content -->
   <!-- /.content-wrapper -->
   <!-- Control Sidebar -->

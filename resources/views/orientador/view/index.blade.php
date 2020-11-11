@@ -108,7 +108,7 @@ Home
         <h3>Escreva um comentário:</h3>
         <!-- Montar controller dessa rota -->
         {!!
-        Form::model($equipe,['route'=>['admin.equipe.comentarioStore',$equipe->id],'class'=>'form-group','id'=>'form'])
+        Form::model($equipe,['route'=>['admin.equipe.comentarioStore',$equipe->equipe_id],'class'=>'form-group','id'=>'form'])
         !!}
         <div class="row">
 
@@ -131,7 +131,6 @@ Home
         {!! Form::close() !!}
     </div>
 
-    <hr>
     @if(count($coments) > 0)
     <div class="col-sm-5">
         <div class="card-header" id="headingTwo">

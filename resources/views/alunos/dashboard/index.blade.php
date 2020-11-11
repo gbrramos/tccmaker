@@ -60,7 +60,6 @@
   }
 
   .equipe_doc img {
-    width: 55em;
     padding: 10px;
     border-radius: 10px;
   }

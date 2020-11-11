@@ -29,7 +29,7 @@ class indexController extends Controller
     {        
         $userId = Auth::id();
         $user = User::where('id',$userId)->first();
-
+        
         if($user['type'] == 'member'){
             $equipe = Equipe::where('id_user',$user['id'])->first();
             $d = Documentacao::where('equipe_id',$equipe['id'])->count();
@@ -37,10 +37,10 @@ class indexController extends Controller
 
             return view('alunos.dashboard.index',compact('equipe','d','doc'));
         }else{
-            $profId = $user['curso_id'];
-            $equipes = Equipe::where('curso_id',$profId)->get();
-
-            return view('orientador.dashboard.index',compact('equipes'));
+            $cursoProfId = $user['curso_id'];
+            $equipes = Equipe::where('curso_id',$cursoProfId)->get();
+            $equipesCount = Equipe::where('curso_id',$cursoProfId)->count();
+            return view('orientador.dashboard.index',compact('equipes','equipesCount'));
         }
         
     }

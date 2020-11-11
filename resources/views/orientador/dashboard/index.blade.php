@@ -14,6 +14,21 @@
     margin: 0 auto;
     padding-bottom: 80px;
   }
+
+  .nav li{
+    margin: 0 70px;
+    width: 20%;
+  }
+
+  .nav li a{
+    background-color: #8257E5;
+  }
+
+  .nav li a:hover{
+    background-color: #eee;
+    color: #8257E5 !important;
+  }
+
   @media only screen and (max-width: 768px) {
     body{
       display: block;
@@ -24,6 +39,34 @@
   }
 </style>
 <div class="controle">
+@if(Auth::user()->type == "super_admin")
+<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+              <a href="{{route('admin.profPainel.lista')}}" class="nav-link">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <p>
+                  Professores
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('admin.equipes.lista')}}" class="nav-link">
+                <i class="fas fa-users"></i>
+                <p>
+                  Equipes
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-life-ring"></i>
+                <p>Suporte</p>
+              </a>
+            </li>
+          </ul>
+@endif
+@if($equipesCount>0)
 @foreach($equipes as $equipe)
     <article class="teacher-item">
       <header>
@@ -44,6 +87,9 @@
       </footer>
     </article>
    @endforeach
+   @else
+   <p>   Nenhuma Equipe cadastrada</p>
+   @endif
     </div>
 
 @endsection
