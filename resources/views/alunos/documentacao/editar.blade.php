@@ -15,7 +15,7 @@
 <style>
     .controle {
         max-width: 1080px;
-        margin: 0 auto;
+        margin: 0 auto 20px auto;
         padding-bottom: 80px;
     }
 
@@ -23,9 +23,8 @@
         height: 200px;
     }
 
-    #page #container {
-        height: fit-content;
-        margin-bottom: 50px;
+    section.content {
+        margin-bottom: 30px;
     }
 </style>
 @endsection
@@ -40,7 +39,7 @@
 
     @include('alunos.documentacao._form')
 
-  
+
     {!! Form::close() !!}
 </div>
 @endsection
@@ -73,20 +72,30 @@
             var total_element = $(".element").length;
 
             // last <div> with element class id
-            var lastid = $(".element:last").attr("id");
-            var split_id = lastid.split("_");
-            var nextindex = Number(split_id[1]) + 1;
+
 
             var max = 99999999999999;
-            // Check total number elements
-            if (total_element < max) {
+            if (total_element == 0) {
+                $(".inputList").append(
+                    "<li class='element col-sm-12' id='div_0' style='padding: 0;'><input type='text' class='m-bottom-xs form-control col-sm-10' name='objetivo_especifico[0]' id='txt_0'><span id='remove_0' class='remove btn btn-danger btn-md m-left-sm m-bottom-xs'><i class='fas fa-trash'></i></span></li>"
+                    );
+
+            } else if (total_element < max) {
+
+                var lastid = $(".element:last").attr("id");
+                var split_id = lastid.split("_");
+                var nextindex = Number(split_id[1]) + 1;
                 // Adding new div container after last occurance of element class
-                $(".element:last").after("<li class='element col-sm-12' id='div_" + nextindex + "' style='padding: 0;'></li>");
+                $(".element:last").after("<li class='element col-sm-12' id='div_" + nextindex +
+                    "' style='padding: 0;'></li>");
 
                 // Adding element to <div>
                 $("#div_" + nextindex).append(
-                    "<input type='text' class='m-bottom-xs form-control col-sm-10' name='objetivo_especifico["+nextindex+"]' id='txt_" + nextindex +
-                    "'><span id='remove_" + nextindex + "' class='remove btn btn-danger btn-md m-left-sm m-bottom-xs'><i class='fas fa-trash'></i></span>");
+                    "<input type='text' class='m-bottom-xs form-control col-sm-10' name='objetivo_especifico[" +
+                    nextindex + "]' id='txt_" + nextindex +
+                    "'><span id='remove_" + nextindex +
+                    "' class='remove btn btn-danger btn-md m-left-sm m-bottom-xs'><i class='fas fa-trash'></i></span>"
+                    );
 
             }
 
@@ -105,35 +114,34 @@
         });
     });
 </script>
-
 <script>
-  $(document).ready(function () {
-    $(".list-action").on('click', 'button', function (e) {
-      e.preventDefault();
-      var action = $(this).data('action');
-      var form = $(this).closest('form');
+    $(document).ready(function () {
+        $(".list-action").on('click', 'button', function (e) {
+            e.preventDefault();
+            var action = $(this).data('action');
+            var form = $(this).closest('form');
 
-      if (action == 'salvar') {
-        $.post($(form).attr('action'), $(form).serialize(), function (data, error) {
+            if (action == 'salvar') {
+                $.post($(form).attr('action'), $(form).serialize(), function (data, error) {
 
-     
-            swal({
-              title: "Sucesso!",
-              text: data.msg,
-              icon: "success",
-              button: false,
-              timer: 3000,
-            });
-            window.location.replace("{{route('admin.doc.lista')}}");
+
+                    swal({
+                        title: "Sucesso!",
+                        text: data.msg,
+                        icon: "success",
+                        button: false,
+                        timer: 3000,
+                    });
+                    window.location.replace("{{route('admin.doc.lista')}}");
+                });
+            } else {
+                swal("Atenção!", data.msg, "info");
+            }
+
+
+
         });
-        } else {
-            swal("Atenção!", data.msg, "info");
-          }
-
-      
-
     });
-  });
 </script>
 
 @endsection

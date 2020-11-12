@@ -33,7 +33,7 @@ class EquipeController extends Controller
 
             }
         else if($equipe){
-            $coments = ComentariosProfessor::where('documentacao_id',$id)->orderBy('created_at','asc')->get();
+            $coments = ComentariosProfessor::where('documentacao_id',$equipe['id'])->orderBy('created','asc')->get();
             return view('orientador.view.index',compact('coments','equipe','objetivosEspecificos'));
         }
                 else{

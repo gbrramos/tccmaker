@@ -1,10 +1,6 @@
 @extends('layouts.painel')
 
-@section('title')
-
-- Notas
-
-@stop
+@section('title') - Notas @stop
 
 @section('pre-assets')
 <style>

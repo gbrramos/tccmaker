@@ -25,11 +25,8 @@
       {!! Form::label('objetivos_especificos','Objetivos Específicos') !!}
 
       <ul class="inputList">
+        <span class="add btn btn-primary btn-md m-bottom-xs" style="width: 100%;"><i class="fas fa-plus"></i></span>
 
-        <li class='element col-sm-12' id='div_0' style='padding: 0;'>
-          <input type='text' name='objetivo_especifico[0]' id='txt_0' class="m-bottom-xs form-control col-sm-10">
-          <span class='add btn btn-primary btn-md m-left-sm m-bottom-xs'><i class="fas fa-plus"></i></span>
-        </li>
         <style>
           input.form-control {
             width: 90%;

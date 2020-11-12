@@ -37,7 +37,6 @@ class DocumentacaoController extends Controller
 
     public function store(Request $request){
         $data = $request->all();
-        
         $idAuth = Auth::id();
         $equipe = Equipe::where('id_user',$idAuth)->first();
         $data['equipe_id'] = $equipe['id'];
@@ -70,9 +69,8 @@ class DocumentacaoController extends Controller
         $idAuth = Auth::id();
         $equipe = Equipe::where('id_user',$idAuth)->first();
         $doc = Documentacao::where('equipe_id',$equipe['id'])->first();
-        $comentarios = ComentariosProfessor::where('documentacao_id',$doc['id'])->get();
+        $comentarios = ComentariosProfessor::where('documentacao_id',$doc['id'])->orderBy('created','asc')->get();
         return view('alunos.notas.index',compact('comentarios'));
-
     }
 
     public function editar(Request $id){
