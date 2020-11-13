@@ -42,7 +42,7 @@
 
   }
 
- 
+
 
   .bloco:hover {
     background-color: #8257e5;
@@ -64,8 +64,23 @@
     border-radius: 10px;
   }
 
-  body#page{
+  body#page {
     margin-bottom: 120px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    ul.infos li{
+      text-align: center;
+
+    }
+
+    ul.infos li:nth-child(2) p.fs-24{
+      font-size: 24px;
+    }
+
+    .equipe_doc img {
+      display: inline-block;
+    }
   }
 </style>
 
@@ -76,9 +91,11 @@
         <img src="{{$equipe->logo->fullpatchLogo()}}" class="profilePic col-sm-2" alt="">
       </li>
       <li>
-        <div class="col-sm-10 m-top-lg"><p style="display: inline-block;font-weight: bold">{{$equipe->titulo}}</p>
-        <p style="display: inline-block;"> - {{$equipe->integrantes}}</p></div>
-      
+        <div class="col-sm-10 m-top-lg">
+          <p class="fs-24" style="display: inline-block;font-weight: bold">{{$equipe->titulo}}</p>
+          <p style="display: inline-block;">{{$equipe->integrantes}}</p>
+        </div>
+
         <p class="col-sm-10">{{$equipe->sobre}}</p>
       </li>
     </ul>
@@ -86,36 +103,36 @@
 
   <div class="center row col-sm-12">
     <div class="col-sm-4">
-      <a href="{{route('admin.doc.lista')}}" class="bloco col-sm-12">
+      <a href="{{route('admin.doc.lista')}}" class="bloco col-sm-12 col-xs-12">
         <i class="fas fa-clipboard"></i>
         <p>Documentação adicionada</p>
       </a>
     </div>
-  @if($d==0)
+    @if($d==0)
     <div class="col-sm-4">
-      <a href="{{route('admin.doc.novo')}}" class="bloco col-sm-12">
+      <a href="{{route('admin.doc.novo')}}" class="bloco col-sm-12 col-xs-12">
         <i class="fas fa-plus"></i>
         <p>Adicionar documentação</p>
       </a>
     </div>
     @else
     <div class="col-sm-4">
-      <a href="{{route('admin.doc.editar',['id'=>$doc->id])}}" class="bloco col-sm-12">
-      <i class="fas fa-pencil-alt"></i>
+      <a href="{{route('admin.doc.editar',['id'=>$doc->id])}}" class="bloco col-sm-12 col-xs-12">
+        <i class="fas fa-pencil-alt"></i>
         <p>Editar documentação</p>
       </a>
     </div>
     @endif
 
     <div class="col-sm-4">
-      <a href="{{route('admin.doc.notas')}}" class="bloco col-sm-12">
+      <a href="{{route('admin.doc.notas')}}" class="bloco col-sm-12 col-xs-12">
         <i class="fas fa-chalkboard-teacher"></i>
         <p>Notas do Professor</p>
       </a>
 
     </div>
 
-    
+
 
 
 

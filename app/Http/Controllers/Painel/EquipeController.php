@@ -22,9 +22,9 @@ class EquipeController extends Controller
 {    
     public function profView(Request $request, $id)
     {
-        $equipe = Documentacao::where('equipe_id','=',$id)->first();
-        $equipeMain = Equipe::where('id','=',$id)->first();
-        $objetivosEspecificos = ObjetivosEspecificos::where('documentacao_id','=',$id)->get();
+        $documentacao = Documentacao::where('equipe_id','=',$id)->first();
+        $equipe = Equipe::where('id','=',$id)->first();
+        $objetivosEspecificos = ObjetivosEspecificos::where('documentacao_id','=',$documentacao['id'])->get();
         $idAuth = Auth::id();
         $auth = User::where('id',$idAuth)->first();
 
@@ -32,12 +32,12 @@ class EquipeController extends Controller
             return view('404');
 
             }
-        else if($equipe){
-            $coments = ComentariosProfessor::where('documentacao_id',$equipe['id'])->orderBy('created','asc')->get();
-            return view('orientador.view.index',compact('coments','equipe','objetivosEspecificos'));
+        else if($documentacao){
+            $coments = ComentariosProfessor::where('documentacao_id',$documentacao['id'])->orderBy('created','asc')->get();
+            return view('orientador.view.index',compact('coments','documentacao','objetivosEspecificos'));
         }
                 else{
-                    return view('orientador.view.erro',compact('equipeMain'));
+                    return view('orientador.view.erro',compact('equipe'));
                 }
         }
     
@@ -46,7 +46,7 @@ class EquipeController extends Controller
     { 
         $equipe = Documentacao::where('equipe_id','=',$id)->first();
         $data = $request->all();
-        $data['documentacao_id'] = $id;
+        $data['documentacao_id'] = $equipe['id'];
         $data['created'] = date("d/m/Y",time());
         $data['autor_id'] = Auth::id();
 

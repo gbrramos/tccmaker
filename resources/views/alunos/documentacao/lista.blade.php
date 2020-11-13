@@ -20,12 +20,35 @@
         margin: 0 auto;
         padding-bottom: 80px;
     }
+
+    @media only screen and (max-width: 768px) {
+        .controle {
+            padding: 0 20px;
+        }
+
+        .list-group {
+            padding-left: 15px;
+        }
+
+        .row {
+            margin: 0 !important;
+        }
+
+        .list-group.img{
+            text-align: center;
+        }
+
+        .list-group.img img {
+            display: inline-block;
+        }
+    }
 </style>
 
 <div class="controle">
-    <h3 class="text-center">Informações da Equipe</h3>
-    <div class="row">
-        <div class="list-group list-group-flush col-sm-2">
+    <h3 class="text-center"><u>Informações da Equipe</u></h3>
+    <br><br>
+    <div class="row infos">
+        <div class="list-group list-group-flush col-sm-2 img">
             <img src="{{$equipe->logo->fullpatchLogo()}}" alt="">
         </div>
         <div class="list-group list-group-flush col-sm-offset-1 col-sm-9">
@@ -47,7 +70,7 @@
     </div>
     <div class="row">
         @if($documentacao != null)
-        <h3 class="text-center col-sm-12">Textos da Documentação</h3>
+        <h3 class="text-center col-sm-12"><u>Textos da Documentação</u></h3>
         <div class="list-group list-group-flush col-sm-12">
             <h3>Resumo:</h3>
             <div class="list-group-item">
@@ -85,15 +108,17 @@
 
 
         <div class="list-group list-group-flush col-sm-12">
-        <h3>Objetivos Específicos:</h3>
+            <h3>Objetivos Específicos:</h3>
 
             <div class="list-group-item">
-            @if(count($objetivosEspecificos)>0)
+                @if(count($objetivosEspecificos)>0)
                 <ul class="objetivosEspecificos">
-                <hr>
+                    <hr>
 
                     @foreach($objetivosEspecificos as $objetivo)
-                    <li style="list-style: disc; margin-left: 20px;"><p>{{$objetivo->descricao}}</p></li>
+                    <li style="list-style: disc; margin-left: 20px;">
+                        <p>{{$objetivo->descricao}}</p>
+                    </li>
                     <hr>
                     @endforeach
                 </ul>

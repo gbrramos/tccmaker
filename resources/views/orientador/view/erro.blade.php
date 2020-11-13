@@ -15,31 +15,43 @@ Home
 
 @section('content')
 <style>
-    .controle {
+  @media only screen and (max-width: 768px) {
+
+    .content {
         max-width: 800px;
         margin: 0 auto;
-        padding-bottom: 80px;
+        padding: 0 20px;
     }
+
+    
+  }
+
+  .controle{
+      max-width: 800px;
+      margin: 0 auto;
+
+  }
 
 
    
 </style>
-
 <div class="controle">
 <div class="list-group list-group-flush">
             <h3>Equipe:</h3>
-            <p class="list-group-item">{{$equipeMain->titulo}}</p>
+            <p class="list-group-item">{{$equipe->titulo}}</p>
         </div>
         <div class="list-group list-group-flush">
             <h3>Integrantes:</h3>
-            <p class="list-group-item">{{$equipeMain->integrantes}}</p>
+            <p class="list-group-item">{{$equipe->integrantes}}</p>
         </div>
         <div class="list-group list-group-flush">
             <h3>Sobre:</h3>
             <div class="list-group-item">
-                <p>{{$equipeMain->sobre}}</p>
+                <p>{{$equipe->sobre}}</p>
             </div>
         </div>
+        <hr>
+  <p class="text-center">Nenhuma parte da documentação foi cadastrada nessa equipe até o momento.</p>
 </div>
 
 @endsection

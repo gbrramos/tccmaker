@@ -1,6 +1,6 @@
 @extends('layouts.painel')
 
-@section('title') - Avaliar {{$equipe->equipe->titulo}}@stop
+@section('title') - Avaliar {{$documentacao->equipe->titulo}}@stop
 @section('pre-assets')
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -31,13 +31,13 @@
     <div class="col-sm-6">
         <div class="list-group list-group-flush">
             <h3>Equipe:</h3>
-            <p class="list-group-item">{{$equipe->equipe->titulo}}</p>
+            <p class="list-group-item">{{$documentacao->equipe->titulo}}</p>
         </div>
 
         <div class="list-group list-group-flush">
             <h3>Sobre:</h3>
             <div class="list-group-item">
-                <p>{{$equipe->equipe->sobre}}</p>
+                <p>{{$documentacao->equipe->sobre}}</p>
             </div>
         </div>
 
@@ -45,8 +45,8 @@
         <div class="list-group list-group-flush">
             <h3>Resumo:</h3>
             <div class="list-group-item">
-                @if($equipe->resumo)
-                <p>{!!$equipe->resumo!!}</p>
+                @if($documentacao->resumo)
+                <p>{!!$documentacao->resumo!!}</p>
                 @else
                 <p>Resumo ainda não escrito</p>
                 @endif
@@ -56,8 +56,8 @@
         <div class="list-group list-group-flush">
             <h3>Introdução:</h3>
             <div class="list-group-item">
-                @if($equipe->introducao)
-                <p>{!!$equipe->introducao!!}</p>
+                @if($documentacao->introducao)
+                <p>{!!$documentacao->introducao!!}</p>
                 @else
                 <p>Introdução ainda não escrita</p>
                 @endif
@@ -69,8 +69,8 @@
             <h3>Objetivo Geral:</h3>
             <div class="list-group-item">
 
-                @if($equipe->objetivo_geral)
-                <p>{!!$equipe->objetivo_geral!!}</p>
+                @if($documentacao->objetivo_geral)
+                <p>{!!$documentacao->objetivo_geral!!}</p>
                 @else
                 <p>Objetivo Geral ainda não escrito</p>
                 @endif
@@ -103,7 +103,7 @@
         <h3>Escreva um comentário:</h3>
         <!-- Montar controller dessa rota -->
         {!!
-        Form::model($equipe,['route'=>['admin.equipe.comentarioStore',$equipe->equipe_id],'class'=>'form-group','id'=>'form'])
+        Form::model($documentacao,['route'=>['admin.equipe.comentarioStore',$documentacao->equipe_id],'class'=>'form-group','id'=>'form'])
         !!}
         <div class="row">
 
@@ -114,11 +114,22 @@
                 <label for="nota">Avaliação (Nota/Menção)</label>
                 <input type="text" name="nota" class="col-sm-12 form-control">
             </div>
+            <style>
+              @media only screen and (max-width: 768px) {
+
+                .col-sm-6.col-xs-6.m-top-lg{
+                    display: inline-block
+                }
+                .col-sm-6.col-xs-6.m-top-lg .btn{
+                    width: 100%;
+                }
+              }
+            </style>
             <div class="list-action" style="width: 100%;">
-                <div class="col-sm-6   m-top-lg">
+                <div class="col-sm-6 col-xs-6  m-top-lg">
                     <a href="{{route('admin.index')}}" class="btn btn-danger col-sm-12">Sair</a>
                 </div>
-                <div class="col-sm-6  m-top-lg">
+                <div class="col-sm-6 col-xs-6 m-top-lg">
                     {!! Form::submit('Enviar',['class'=>"btn btn-success col-sm-12"])!!}
                 </div>
             </div>
@@ -199,7 +210,7 @@
                         });
                         document.getElementById("form").reset();
                         window.location.replace(
-                            "{{route('admin.equipe.view',['id'=>$equipe->id])}}");
+                            "{{route('admin.equipe.view',['id'=>$documentacao->id])}}");
                     } else {
                         swal("Atenção!", data.msg, "info");
                     }

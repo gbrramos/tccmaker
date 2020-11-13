@@ -15,8 +15,14 @@
 
   @media only screen and (max-width: 768px) {
     #container {
-      padding-top: 100px
+      padding-top: 0;
     }
+  }
+
+  .form-control{
+      height: inherit;
+     font-size: inherit;
+     font-weight: inherit;
   }
 
   .toast.show {

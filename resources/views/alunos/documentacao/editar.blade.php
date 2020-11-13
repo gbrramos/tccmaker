@@ -86,12 +86,12 @@
                 var split_id = lastid.split("_");
                 var nextindex = Number(split_id[1]) + 1;
                 // Adding new div container after last occurance of element class
-                $(".element:last").after("<li class='element col-sm-12' id='div_" + nextindex +
+                $(".element:last").after("<li class='element col-sm-12 col-xs-12' id='div_" + nextindex +
                     "' style='padding: 0;'></li>");
 
                 // Adding element to <div>
                 $("#div_" + nextindex).append(
-                    "<input type='text' class='m-bottom-xs form-control col-sm-10' name='objetivo_especifico[" +
+                    "<input type='text' class='m-bottom-xs form-control col-sm-10 col-xs-8' name='objetivo_especifico[" +
                     nextindex + "]' id='txt_" + nextindex +
                     "'><span id='remove_" + nextindex +
                     "' class='remove btn btn-danger btn-md m-left-sm m-bottom-xs'><i class='fas fa-trash'></i></span>"

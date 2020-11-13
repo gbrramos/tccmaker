@@ -14,12 +14,17 @@
         .coments {
             width: 100%;
         }
+
+        .content{
+            padding: 0 20px;
+        }
     }
 </style>
 @endsection
 @section('content')
 <div class="coments">
     <div class="card-body">
+    <h3 class="text-center"><u>Comentários atribuídos a sua equipe</u></h3>
         <div class="">
             @foreach($comentarios as $c)
             <ul class="list-group-item">
