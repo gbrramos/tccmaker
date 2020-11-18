@@ -75,7 +75,7 @@ section.content {
                             <td class="text-center"><p class="btn btn-success ">Você está conectado a essa conta</p></td>
                             @else
                             <td class="text-center">
-                                <a href="{{route('admin.equipes.delete',['id'=>$prof->id])}}" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></a>
+                                <a href="{{route('admin.profPainel.delete',['id'=>$prof->id])}}" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></a>
                             </td>
                             @endif
                         </tr>

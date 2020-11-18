@@ -149,7 +149,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
             <div class="card-body">
                 <div class="list-group list-group-flush">
-                    @foreach($coments as $c)
+                    @foreach(@$coments as $c)
                     <ul class="list-group-item">
                         <li>Postado em: {{$c->created}}</li>
                         <li><small>

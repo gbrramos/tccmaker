@@ -70,11 +70,7 @@ class UserController extends Controller
 
         $data['id_user'] = $idUser['id'];
 
-
        Equipe::create($data);
-
- 
-     
       
            return response()->json([
             'erro' => 0,
@@ -92,7 +88,6 @@ class UserController extends Controller
 
         $data['profile_id'] = $media['id'];
 
- 
        User::create([
         'name' => $data['name'],
         'password' =>  $data['password'],
@@ -144,13 +139,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
-    {
-       
-       
-        User::delete($id);
-      
-    }
+    
+
 
     public function listaEquipes(){
         $equipes = Equipe::paginate(10);
@@ -159,17 +149,21 @@ class UserController extends Controller
 
     public function deleteEquipe($id)
     {
-       $idUser = Equipe::where('id',$id)->first('id_user');
-        if($idUser){
-            User::destroy($idUser);
-        }
-        Equipe::destroy($id);
+        User::where('id',$id)->update(['status' => 'removido']);   
+        return redirect()->route('admin.equipes.lista');
       
     }
 
     public function listaProfs(){
-        $profs = User::where('type','admin')->orWhere('type','super_admin')->paginate(10);
+        $profs = User::where('status','ativo')->where('type','admin')->orWhere('type','super_admin')->paginate(10);
         return view('admin.profs.lista',compact('profs'));
+    }
+
+    public function deleteProfs($id)
+    {
+        User::where('id',$id)->update(['status' => 'removido']);   
+        return redirect()->route('admin.profPainel.lista');
+ 
     }
 
 }

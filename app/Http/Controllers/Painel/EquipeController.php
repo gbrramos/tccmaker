@@ -6,15 +6,12 @@ use RW940cms\Http\Controllers\Controller;
 use RW940cms\Models\Equipe;
 use RW940cms\Models\Documentacao;
 use RW940cms\Models\ObjetivosEspecificos;
-
 use RW940cms\Models\ComentariosProfessor;
 use RW940cms\Models\Media;
 use RW940cms\Models\User;
-
 use RW940cms\Criteria\StatusCriteria;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\Input as Input;
 use Carbon\Carbon;
 use DB;
@@ -55,10 +52,4 @@ class EquipeController extends Controller
         return redirect()->route('admin.equipe.view',['id'=>$id]);
     }
 
-    public function editar(Request $id)
-    {
-        $idAuth = Auth::id();
-        $equipe = Equipe::where('id_user',$idAuth)->first();
-        dd($equipe);
-    }
 }

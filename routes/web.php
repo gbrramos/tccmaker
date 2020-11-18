@@ -84,7 +84,6 @@ Route::group(['prefix'=>'','middleware'=>['auth'], 'as'=>'admin.'], function () 
        
     Route::group(['prefix'=>'equipe','as'=>'equipe.'], function () {
         Route::get('/{id}', ['as'=>'view','uses'=>'Painel\EquipeController@profView']);
-        Route::get('editar/{id}', ['as'=>'profile','uses'=>'Painel\EquipeController@editar']);
         Route::post('/comentario/{id}', ['as'=>'comentarioStore','uses'=>'Painel\EquipeController@comentario']);
     });  
 

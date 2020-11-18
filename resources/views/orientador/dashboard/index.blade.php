@@ -16,9 +16,12 @@
   }
 
   .nav li {
-    margin: 0 70px;
-    width: 20%;
+    width: 30%;
   }
+
+  .nav li:last-child{
+      float: right;
+    }
 
   .nav li a {
     background-color: #8257E5;
@@ -41,11 +44,11 @@
     .nav li {
       margin: 0 0px;
       width: 30%;
-      float: inherit;
       display: inline-block;
     }
 
     .nav {
+      padding: 0 20px;
       text-align: center;
     }
   }
@@ -70,12 +73,6 @@
       </a>
     </li>
 
-    <li class="nav-item">
-      <a href="#" class="nav-link">
-        <i class="fas fa-life-ring"></i>
-        <p>Suporte</p>
-      </a>
-    </li>
   </ul>
   @endif
   @if($equipesCount>0)

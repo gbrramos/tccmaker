@@ -42,27 +42,20 @@ class DocumentacaoController extends Controller
         $data['equipe_id'] = $equipe['id'];
 
         Documentacao::create($data);
-       
         $doc = Documentacao::where('equipe_id',$equipe['id'])->first();
         $array = array_values($data['objetivo_especifico']);
         $max = count($array);
-
         for($i=0;$i<$max;$i++){
             $linha = $array[$i];
             ObjetivosEspecificos::create([
                 'documentacao_id'=>$doc['id'],
                 'descricao'=>$linha,
             ]);
-
         }
-
         return response()->json([
             'error' => '0',
             'msg' => 'Atualização realizada com sucesso',
         ]);
-           
-           
-
     }
 
     public function notas(){
@@ -97,19 +90,12 @@ class DocumentacaoController extends Controller
                 'documentacao_id'=>$doc['id'],
                 'descricao'=>$linha,
             ]);
-
         }
-
         unset($data['objetivo_especifico']);
-
-        Documentacao::where('id',$id)->update($data);
-       
-       
-
+        Documentacao::where('id',$id)->update($data);       
         return response()->json([
             'error' => '0',
             'msg' => 'Atualização realizada com sucesso',
-        ]);
-           
+        ]);  
     }
 }
