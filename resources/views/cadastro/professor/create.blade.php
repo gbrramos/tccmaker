@@ -41,6 +41,9 @@
     #preview li img {
       max-width: 100%;
     }
+
+    .red{ color: red; padding-left: 10px}
+    .green{ color: green;  padding-left: 10px }
   </style>
 
 
@@ -81,7 +84,8 @@
       </div>
       <div class="input-block">
         <label for="login">Email</label>
-        <input name="email" id="login" type="email" required>
+        <input name="email" id="login" type="email" onkeyup="checklogin()" required>
+        <span id="name_status"></span>
       </div>
       <div class="input-block">
         <label for="senha">Senha</label>
@@ -152,6 +156,58 @@
 
 
   });
+
+  function checklogin() {
+    var loginText = document.getElementById("login").value;
+    $.ajax({
+      type: 'post',
+      url: '{{route("verifica-login")}}',
+      headers: {
+        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+      },
+      data: {
+        user_name: loginText,
+      },
+      success: function (response) {
+        if(response == 'True'){
+          $('#name_status').html('<p class="red">Este Email já existe</p>');
+        }else{
+          $('#name_status').html('<p class="green">Email válido</p>');
+
+        }
+        if (response == "OK") {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    });
+    // $.ajax({
+    //   url: '{{route("verifica-login")}}',
+    //   type: 'POST',
+    //   cache: false,
+    //   contentType: false,
+    //   processData: false,
+    //   headers: {
+    //     'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    //   },
+    //   data: data,
+    //   success: function (result) {
+    //     $.each(result, function (index, value) {
+    //       var html = '';
+    //       html += '<li>';
+    //       html += '<input type="hidden" name="arquivo" value="' + value + '" />';
+    //       html += '<br>';
+    //       html += `<img src="{{asset("uploads/img/profiles")}}/` + value + `" alt="">`;
+    //       html += '</li>';
+    //       $('#preview ul').html(html);
+    //       //console.log(value);
+
+
+    //     });
+    //   }
+    // });
+  }
 </script>
 
 <script>
@@ -182,6 +238,11 @@
       }
     });
   });
+</script>
+
+<script>
+
+
 </script>
 
 @endsection

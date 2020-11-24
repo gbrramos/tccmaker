@@ -128,6 +128,7 @@ Route::group(['prefix'=>'','middleware'=>['auth'], 'as'=>'admin.'], function () 
 
 Route::get('/', ['as'=>'login','uses'=>'Painel\indexController@loginView']);
 
+Route::post('/verify', ['as'=>'verifica-login','uses'=>'Painel\UserController@verifica_login']);
 
 
 Route::group(['prefix'=>'alunos','as'=>'alunos.'], function () {

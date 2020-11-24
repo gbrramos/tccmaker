@@ -41,6 +41,8 @@
     #preview li img {
       max-width: 100%;
     }
+    .red{ color: red; padding-left: 10px}
+    .green{ color: green;  padding-left: 10px }
   </style>
 
 
@@ -88,7 +90,8 @@
       </div>
       <div class="input-block">
         <label for="login">Login</label>
-        <input name="login" id="login" required>
+        <input name="login" id="login" onkeyup="checklogin()" required>
+        <span id="name_status"></span>
       </div>
       <div class="input-block">
         <label for="senha">Senha</label>
@@ -154,9 +157,10 @@
       }
     });
     $(".loadingimg").fadeOut('slow');
-
-
   });
+
+
+  
 </script>
 
 <script>
@@ -187,6 +191,34 @@
       }
     });
   });
+
+  
+  function checklogin() {
+    var loginText = document.getElementById("login").value;
+    $.ajax({
+      type: 'post',
+      url: '{{route("verifica-login")}}',
+      headers: {
+        'X-CSRF-TOKEN': "{{ csrf_token() }}"
+      },
+      data: {
+        user_name: loginText,
+      },
+      success: function (response) {
+        if(response == 'True'){
+          $('#name_status').html('<p class="red">Este Login já existe</p>');
+        }else{
+          $('#name_status').html('<p class="green">Login válido</p>');
+
+        }
+        if (response == "OK") {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    });
+  }
 </script>
 
 @endsection

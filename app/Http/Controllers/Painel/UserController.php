@@ -93,6 +93,7 @@ class UserController extends Controller
         'password' =>  $data['password'],
         'email' => $data['email'],
         'slug'=> preg_replace('/( )/' , '-',strtolower($data['name'])),
+        'status'=>'ativo',
         'type' => 'admin',
         'media_id'=> $data['profile_id'],
         'curso_id'=> $data['curso_id'],
@@ -164,6 +165,17 @@ class UserController extends Controller
         User::where('id',$id)->update(['status' => 'removido']);   
         return redirect()->route('admin.profPainel.lista');
  
+    }
+
+    public function verifica_login(request $request){
+        $name = $request['user_name'];
+        $count = User::where('email',$name)->where('status','!=','removido')->count();
+        if($count >= 1){
+            return response()->json('True');
+        }else{
+            return response()->json('False');
+        }
+       
     }
 
 }
