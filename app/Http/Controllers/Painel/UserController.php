@@ -144,13 +144,13 @@ class UserController extends Controller
 
 
     public function listaEquipes(){
-        $equipes = Equipe::paginate(10);
+        $equipes = Equipe::where('status','!=','removido')->paginate(10);
         return view('admin.equipes.lista',compact('equipes'));
     }
 
     public function deleteEquipe($id)
     {
-        User::where('id',$id)->update(['status' => 'removido']);   
+        Equipe::where('id',$id)->update(['status' => 'removido']);   
         return redirect()->route('admin.equipes.lista');
       
     }

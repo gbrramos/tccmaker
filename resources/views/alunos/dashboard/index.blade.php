@@ -2,8 +2,7 @@
 @section('title', "- Home")
 
 @section('pre-assets')
-<link rel="stylesheet" type="text/css" href="{{asset('vendors/slick-1.8.1/slick/slick.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('vendors/slick-1.8.1/slick/slick-theme.css')}}" />
+
 @endsection
 
 
@@ -88,6 +87,7 @@
   <div class="row equipe_doc">
     <ul class="infos">
       <li>
+     
         <img src="{{$equipe->logo->fullpatchLogo()}}" class="profilePic col-sm-2" alt="">
       </li>
       <li>
@@ -132,11 +132,6 @@
 
     </div>
 
-
-
-
-
-
   </div>
 
 </div>
@@ -145,7 +140,6 @@
 
 @section('pos-script')
 
-<script type="text/javascript" src="{{asset('vendors/slick-1.8.1/slick/slick.min.js')}}"></script>
 
 
 @endsection

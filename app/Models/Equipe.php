@@ -13,6 +13,7 @@ class Equipe extends Model
         'logo_id',
         'sobre',
         'id_user',
+        'status',
         'integrantes',
         'curso_id',
         'login',

@@ -26,6 +26,10 @@
     <div class="card-body">
     <h3 class="text-center"><u>Comentários atribuídos a sua equipe</u></h3>
         <div class="">
+        @if(count($comentarios) == 0)
+        <p class="text-center">Nenhum comentario atribuído a sua equipe</p>
+
+        @else
             @foreach($comentarios as $c)
             <ul class="list-group-item">
                 <li>Postado em: {{$c->created}}</li>
@@ -42,6 +46,10 @@
                 @endif
             </ul>
             @endforeach
+
+            
+        
+            @endif
             <div class="controle"><br><br><br><br><br><br></div>
         </div>
     </div>
